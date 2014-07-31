@@ -174,8 +174,9 @@ module.exports = function(grunt) {
 
 				var dest = config.dest;
 
-				if (isDirectory(dest) && !config.orig.cwd) {
-					dest = path.join(dest, src);
+				// Sean hack
+				if (isDirectory(dest)) {
+					dest = path.join(dest, src.replace(/^.*[\\\/]/, ''));
 				}
 
 				grunt.log.debug('Saving to', dest);
